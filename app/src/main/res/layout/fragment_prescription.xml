@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/p_name_label"/>
+
+    <EditText
+        android:id="@+id/p_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/p_name_hint" />
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="@string/p_instru_label" />
+
+    <EditText
+        android:id="@+id/p_instructions"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:text="@string/p_instru_hint"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="@string/p_dosage_label" />
+
+    <EditText
+        android:id="@+id/p_dosage"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:text="@string/p_dosage_hint"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="@string/p_fill_date" />
+
+    <Button
+        android:id="@+id/p_fill_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <CheckBox
+        android:id="@+id/p_is_active"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/p_is_active"/>
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Pill Pall</string>
+    <string name="p_name_hint">Enter a name of the prescription</string>
+    <string name="p_name_label">Name:</string>
+    <string name="p_instru_label">Instructions:</string>
+    <string name="p_instru_hint">Enter instructions for medication</string>
+    <string name="p_dosage_label">Dosage:</string>
+    <string name="p_dosage_hint">Enter dosage of medication</string>
+    <string name="p_is_active">Active: </string>
+    <string name="p_fill_date">Date Filled: </string>
+
+
+</resources>

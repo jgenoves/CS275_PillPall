@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxHeight="90dp"
+    android:minHeight="90dp">
+
+
+    <TextView
+        android:id="@+id/p_name"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Prescription Name"
+        android:textColor="#32BEA6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/p_dosage"
+        android:layout_width="138dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="16dp"
+        android:text="Dosage"
+        android:textColor="#005AFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p_name" />
+
+    <TextView
+        android:id="@+id/p_instructions"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Instructions"
+        android:textColor="#F30606"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p_dosage" />
+
+    <TextView
+        android:id="@+id/p_fill_date"
+        android:layout_width="139dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Fill Date"
+        app:layout_constraintStart_toEndOf="@+id/p_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line_break1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
