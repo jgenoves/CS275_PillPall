@@ -17,9 +17,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PrescriptionPagerActivity">
+        <activity android:name=".PrescriptionPagerActivity"
+            android:parentActivityName=".PrescriptionListActivity">
 
         </activity>
+
+
     </application>
 
 </manifest>

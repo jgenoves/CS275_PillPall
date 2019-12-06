@@ -9,5 +9,11 @@
     <string name="p_is_active">Active: </string>
     <string name="p_fill_date">Date Filled: </string>
 
+    <string name="new_prescription">New Prescription</string>
+    <string name="show_subtitle">Show subtitle</string>
+    <string name="hide_subtitle">Hide subtitle</string>
+    <string name="subtitle_format">%1$d prescriptions</string>
+
+    <string name="delete_prescription">Delete Prescription</string>
 
 </resources>

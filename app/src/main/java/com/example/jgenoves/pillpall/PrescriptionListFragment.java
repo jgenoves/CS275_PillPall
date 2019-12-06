@@ -25,11 +25,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PrescriptionListFragment extends Fragment {
 
+    private static final String SAVED_SUBTITLE_VISIBLE="subtitle";
+
     private RecyclerView mPresciptionRecyclerView;
     private PrescriptionAdapter mAdapter;
 
+
+    private boolean mSubtitleVisible;
+
+
     public void onCreate(Bundle savedInstanceState){
+
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+
+
     }
 
     @Override
@@ -40,6 +50,10 @@ public class PrescriptionListFragment extends Fragment {
         mPresciptionRecyclerView = (RecyclerView) v
                 .findViewById(R.id.plist_recycler_view);
         mPresciptionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        if(savedInstanceState != null){
+            mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
+        }
 
         updateUI();
 
@@ -52,6 +66,12 @@ public class PrescriptionListFragment extends Fragment {
         updateUI();
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
+    }
+
     private void updateUI(){
         PrescriptionSingleton pLab = PrescriptionSingleton.get(getActivity());
         List<Prescription> prescriptions = pLab.getPrescriptions();
@@ -62,9 +82,58 @@ public class PrescriptionListFragment extends Fragment {
             mAdapter = new PrescriptionAdapter(prescriptions);
             mPresciptionRecyclerView.setAdapter(mAdapter);
         } else {
+            mAdapter.setPrescriptions(prescriptions);
             mAdapter.notifyDataSetChanged();
         }
+
+        updateSubtitle();
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_prescription_list, menu);
+
+        MenuItem subtitleItem = menu.findItem(R.id.show_subtitle);
+        if(mSubtitleVisible){
+            subtitleItem.setTitle(R.string.hide_subtitle);
+        }else{
+            subtitleItem.setTitle(R.string.show_subtitle);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.new_prescription:
+                Prescription p = new Prescription();
+                PrescriptionSingleton.get(getActivity()).addPrescription(p);
+                Intent intent = PrescriptionPagerActivity.newIntent(getActivity(), p.getId());
+                startActivity(intent);
+                return true;
+            case R.id.show_subtitle:
+                mSubtitleVisible = !mSubtitleVisible;
+                getActivity().invalidateOptionsMenu();
+                updateSubtitle();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void updateSubtitle(){
+            PrescriptionSingleton prescriptionSingleton = PrescriptionSingleton.get(getActivity());
+            int pCount = prescriptionSingleton.getPrescriptions().size();
+            String subtitle = getString(R.string.subtitle_format, pCount);
+
+            if(!mSubtitleVisible){
+                subtitle = null;
+            }
+
+            AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+            appCompatActivity.getSupportActionBar().setSubtitle(subtitle);
+
+    }
+
 
 
 
@@ -145,6 +214,10 @@ public class PrescriptionListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mPrescriptions.size();
+        }
+
+        public void setPrescriptions(List<Prescription> prescriptionList){
+            mPrescriptions = prescriptionList;
         }
     }
 
